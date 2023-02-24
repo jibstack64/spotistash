@@ -3,7 +3,7 @@ from spotipy.oauth2 import SpotifyOAuth
 import spotipy.client as spotipy
 import sys
 
-CLIENT_ID, CLIENT_SECRET = "d132d7a3253b457d800b36c8ca39f09f", "ae140b2f578c4faba952766b55a80f89"
+CLIENT_ID, CLIENT_SECRET = "", ""
 REDIRECT_URI = "http://localhost:8888"
 MAX = 10
 
