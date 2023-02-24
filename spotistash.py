@@ -39,7 +39,8 @@ for playlist in playlists:
         if len(new) > 0:
             for t in new:
                 if t not in tracks:
-                    tracks.append(t["track"])
+                    if t.get("track", None) != None:
+                        tracks.append(t["track"])
         else:
             break
 
