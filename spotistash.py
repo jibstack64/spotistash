@@ -55,4 +55,4 @@ for track in tracks:
 for layer in layers:
     client.playlist_add_items(playlist["id"], [track["id"] for track in layer])
 
-print(f"{Colour.LIGHTGREEN_EX}done, here's your playlist: {Colour.LIGHTMAGENTA_EX}{playlist['external_urls']['href']}{Colour.RESET}")
+print(f"{Colour.LIGHTGREEN_EX}done, here's your playlist: {Colour.LIGHTMAGENTA_EX}{playlist['external_urls']['spotify']}{Colour.RESET}")
