@@ -1,8 +1,9 @@
 from colorama import Fore as Colour
 from spotipy.oauth2 import SpotifyOAuth
 import spotipy.client as spotipy
+import sys
 
-CLIENT_ID, CLIENT_SECRET = "", ""
+CLIENT_ID, CLIENT_SECRET = "d132d7a3253b457d800b36c8ca39f09f", "ae140b2f578c4faba952766b55a80f89"
 REDIRECT_URI = "http://localhost:8888"
 MAX = 10
 
@@ -15,11 +16,15 @@ client = spotipy.Spotify(auth_manager=SpotifyOAuth(
     redirect_uri=REDIRECT_URI
 ))
 
+# override
+if len(sys.argv) > 1:
+    client.current_user_playlists = lambda *args, **kwargs : client.user_playlists(sys.argv[1].split("/user/")[1].split("?si=")[0], *args, **kwargs)
+
 print(f"{Colour.LIGHTGREEN_EX}compiling your playlists...{Colour.RESET}")
 playlists = []
 # get all playlists
 for x in range(0, MAX):
-    new = client.current_user_playlists(50, offset=x*50)["items"]
+    new = client.current_user_playlists(limit=50, offset=x*50)["items"]
     if len(new) > 0:
         playlists += new
     else:
