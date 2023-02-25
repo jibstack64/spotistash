@@ -3,7 +3,7 @@ from spotipy.oauth2 import SpotifyOAuth
 import spotipy.client as spotipy
 import sys
 
-CLIENT_ID, CLIENT_SECRET = "", ""
+CLIENT_ID, CLIENT_SECRET = "d132d7a3253b457d800b36c8ca39f09f", "8de79b18e850482e9b42924e8e8fcefd"
 REDIRECT_URI = "http://localhost:8888"
 MAX = 10
 
@@ -53,12 +53,19 @@ layers = [[]]
 x = 0
 l = 0
 for track in tracks:
-    if x % 100:
+    if x % 100 == 0:
         l += 1
         layers.append([])
     layers[l].append(track)
     x += 1
+l = 0
 for layer in layers:
-    client.playlist_add_items(playlist["id"], [track["id"] for track in layer])
+    l += 1
+    try:
+        client.playlist_add_items(playlist["id"], [track["id"] for track in layer])
+    except Exception as e:
+        print(f"{Colour.LIGHTRED_EX}an error occured when attempting to add layer {Colour.LIGHTMAGENTA_EX}{l}{Colour.LIGHTRED_EX}, skipping (this may result in missing tracks)...{Colour.RESET}")
+        continue
+    print(f"{Colour.LIGHTMAGENTA_EX}{l}{Colour.LIGHTYELLOW_EX} layers complete.{Colour.RESET}", end="\r")
 
 print(f"{Colour.LIGHTGREEN_EX}done, here's your playlist: {Colour.LIGHTMAGENTA_EX}{playlist['external_urls']['spotify']}{Colour.RESET}")
