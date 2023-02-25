@@ -3,7 +3,7 @@ from spotipy.oauth2 import SpotifyOAuth
 import spotipy.client as spotipy
 import sys
 
-CLIENT_ID, CLIENT_SECRET = "d132d7a3253b457d800b36c8ca39f09f", "8de79b18e850482e9b42924e8e8fcefd"
+CLIENT_ID, CLIENT_SECRET = "", ""
 REDIRECT_URI = "http://localhost:8888"
 MAX = 10
 
@@ -53,7 +53,7 @@ layers = [[]]
 x = 0
 l = 0
 for track in tracks:
-    if x % 100 == 0:
+    if x % 100 == 0 and x > 0:
         l += 1
         layers.append([])
     layers[l].append(track)
