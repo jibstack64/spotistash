@@ -4,7 +4,7 @@
 
 *A script I cooked up that compiles all of your playlist's songs to a single playlist.*
 
-![image](https://user-images.githubusercontent.com/107510599/221301053-2db1a718-d5af-4468-a3ba-27f2f327b7ef.png)
+![image](https://github.com/jibstack64/spotistash/blob/master/preview.gif)
 
 Simply change the `CLIENT_ID` and `CLIENT_SECRET` variables to the values corresponding with your Spotify bot client.
 
